@@ -1,0 +1,19 @@
+{
+  "name": "ds",
+  "connector": "soap",
+  "url": "http://calculator-webservice.mybluemix.net/calculator",
+  "wsdl": "http://calculator-webservice.mybluemix.net/calculator?wsdl",
+  "remotingEnabled": true,
+  "operations": {
+    "add": {
+      "service": "CalculatorService",
+      "port": "CalculatorPort",
+      "operation": "add"
+    },
+    "subtract": {
+      "service": "CalculatorService",
+      "port": "CalculatorPort",
+      "operation": "subtract"
+    }
+  }
+}
