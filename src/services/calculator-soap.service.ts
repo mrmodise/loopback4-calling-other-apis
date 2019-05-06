@@ -14,7 +14,7 @@ export interface CalculatorSoapService {
 
 export class CalculatorSoapServiceProvider implements Provider<CalculatorSoapService> {
   constructor(
-    // restds must match the name property in the datasource json file
+    // ds must match the name property in the datasource json file
     @inject('datasources.ds')
     protected dataSource: DsDataSource = new DsDataSource(),
   ) {}

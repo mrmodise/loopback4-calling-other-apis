@@ -1,14 +1,17 @@
 import {getService} from '@loopback/service-proxy';
 import {inject, Provider} from '@loopback/core';
 import {RestdsDataSource} from '../datasources';
-import {AddResponse, CalculatorParameters, SubtractResponse} from '../helpers';
 
 export interface CalculatorRestService {
   // this is where you define the Node.js methods that will be
-  // mapped to the SOAP operations as stated in the datasource
+  // mapped to the REST operations as stated in the datasource
   // json file.
-  add(args: CalculatorParameters): Promise<AddResponse>
-  subtract(args: CalculatorParameters): Promise<SubtractResponse>
+  // TODO strongly type the return type
+  // tslint:disable-next-line:no-any
+  getAllPeople(): Promise<any[]>;
+  // TODO strongly type the return type
+  // tslint:disable-next-line:no-any
+  getPerson(personId: string): Promise<any[]>;
 }
 
 export class CalculatorRestServiceProvider implements Provider<CalculatorRestService> {
