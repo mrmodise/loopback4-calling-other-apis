@@ -1,0 +1,30 @@
+{
+  "name": "auth",
+  "connector": "rest",
+  "baseURL": "https://thabthapholdings.herokuapp.com/api",
+  "crud": true,
+  "options": {
+    "headers": {
+      "accept": "application/json",
+      "content-type": "application/json"
+    }
+  },
+  "operations": [
+    {
+      "template": {
+        "method": "POST",
+        "url": "https://thabthapholdings.herokuapp.com/api/authenticate",
+        "json": {
+          "username": "{username}",
+          "password": "{password}"
+        }
+      },
+      "functions": {
+        "login": [
+          "username",
+          "password"
+        ]
+      }
+    }
+  ]
+}
