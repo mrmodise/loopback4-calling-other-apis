@@ -55,6 +55,7 @@
     "@loopback/rest": "^1.10.3",
     "@loopback/rest-explorer": "^1.1.17",
     "@loopback/service-proxy": "^1.1.5",
+    "log4js": "^4.1.1",
     "loopback-connector-rest": "^3.4.1",
     "loopback-connector-soap": "^4.3.0"
   },
