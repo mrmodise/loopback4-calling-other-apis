@@ -9,8 +9,8 @@ import {
   Send,
   SequenceHandler,
 } from '@loopback/rest';
-import {CalculatorService} from './services';
-import {CalculatorServiceBindings} from './keys';
+import {CalculatorSoapService} from './services';
+import {CalculatorSoapServiceBindings} from './keys';
 
 const SequenceActions = RestBindings.SequenceActions;
 
@@ -21,7 +21,7 @@ export class MySequence implements SequenceHandler {
     @inject(SequenceActions.INVOKE_METHOD) protected invoke: InvokeMethod,
     @inject(SequenceActions.SEND) public send: Send,
     @inject(SequenceActions.REJECT) public reject: Reject,
-    @inject(CalculatorServiceBindings.SERVICE) public calculatorService: CalculatorService) {
+    @inject(CalculatorSoapServiceBindings.SERVICE) public calculatorService: CalculatorSoapService) {
   }
 
   async handle(context: RequestContext) {
