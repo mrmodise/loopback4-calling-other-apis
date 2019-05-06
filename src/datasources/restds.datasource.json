@@ -16,17 +16,10 @@
         "url": "https://swapi.co/api/people/{personId}"
       },
       "functions": {
-        "getCharacter": ["personId"]
-      },
-      "add": {
-        "service": "CalculatorService",
-        "port": "CalculatorPort",
-        "operation": "add"
-      },
-      "subtract": {
-        "service": "CalculatorService",
-        "port": "CalculatorPort",
-        "operation": "subtract"
+        "getPerson": [
+          "personId"
+        ],
+        "getAllPeople": []
       }
     }
   ]
