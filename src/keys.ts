@@ -1,5 +1,5 @@
 import {BindingKey} from '@loopback/context';
-import {CalculatorRestService, CalculatorSoapService} from './services';
+import {AuthService, CalculatorRestService, CalculatorSoapService} from './services';
 
 export namespace CalculatorSoapServiceBindings {
   export const SERVICE = BindingKey.create<CalculatorSoapService>(
@@ -10,5 +10,11 @@ export namespace CalculatorSoapServiceBindings {
 export namespace CalculatorRestServiceBindings {
   export const SERVICE = BindingKey.create<CalculatorRestService>(
     'services.CalculatorRestService',
+  );
+}
+
+export namespace AuthServiceBindings {
+  export const SERVICE = BindingKey.create<AuthService>(
+    'services.AuthService',
   );
 }
