@@ -7,7 +7,7 @@ This is a demo project that illustrates calling APIs from within Loopback 4. Unl
  1) ```/add/{intA}/{intB}``` unsecure SOAP endpoint
  2) ```/api/people/{personId}``` unsecure REST endpoint
  3) ```/api/people``` unsecure REST endpoint
- 4) ```/api/authenticate``` secure REST endpoint
+ 4) ```/api/authenticate``` secure REST endpoint (username: user and password: user)
  5) ```/ping``` unsecure REST endpoint
  
 ## Prerequisites
