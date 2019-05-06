@@ -17,6 +17,16 @@
       },
       "functions": {
         "getCharacter": ["personId"]
+      },
+      "add": {
+        "service": "CalculatorService",
+        "port": "CalculatorPort",
+        "operation": "add"
+      },
+      "subtract": {
+        "service": "CalculatorService",
+        "port": "CalculatorPort",
+        "operation": "subtract"
       }
     }
   ]
