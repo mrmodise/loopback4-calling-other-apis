@@ -6,12 +6,12 @@
   "remotingEnabled": true,
   "operations": {
     "add": {
-      "service": "CalculatorService",
+      "service": "CalculatorSoapService",
       "port": "CalculatorPort",
       "operation": "add"
     },
     "subtract": {
-      "service": "CalculatorService",
+      "service": "CalculatorSoapService",
       "port": "CalculatorPort",
       "operation": "subtract"
     }
