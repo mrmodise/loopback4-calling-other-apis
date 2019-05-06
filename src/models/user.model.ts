@@ -16,10 +16,9 @@ export class User extends Entity {
 
   @property({
     type: 'boolean',
-    required: false
+    required: false,
   })
   rememberMe: boolean;
-
 
   constructor(data?: Partial<User>) {
     super(data);

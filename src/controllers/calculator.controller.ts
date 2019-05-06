@@ -1,19 +1,27 @@
 import {inject} from '@loopback/context';
-import {CalculatorRestService, CalculatorSoapService} from '../services';
+import {
+  CalculatorRestServiceProvider,
+  CalculatorSoapServiceProvider,
+} from '../services';
 import {get, param} from '@loopback/rest';
-import {CalculatorRestServiceBindings, CalculatorSoapServiceBindings} from '../keys';
+import {
+  CalculatorRestServiceBindings,
+  CalculatorSoapServiceBindings,
+} from '../keys';
 import {AddResponse, CalculatorParameters} from '../helpers';
 import {logger} from '../helpers/logger';
 
 export class CalculatorController {
   // TODO strong type the result
   // tslint:disable-next-line:no-any
-  result: any;
+  response: any;
 
-  constructor(@inject(CalculatorSoapServiceBindings.SERVICE)
-              protected calculatorSoapService: CalculatorSoapService,
-              @inject(CalculatorRestServiceBindings.SERVICE)
-              protected calculatorRestService: CalculatorRestService,) {}
+  constructor(
+    @inject(CalculatorSoapServiceBindings.SERVICE)
+    protected calculatorSoapService: CalculatorSoapServiceProvider,
+    @inject(CalculatorRestServiceBindings.SERVICE)
+    protected calculatorRestService: CalculatorRestServiceProvider,
+  ) {}
 
   @get('/add/{intA}/{intB}')
   async add(
@@ -22,28 +30,28 @@ export class CalculatorController {
   ): Promise<AddResponse> {
     // TODO add validations checks before submitting data
     logger.debug(`REST request to add 2 numbers: ${intA} and ${intB}`);
-     this.result =  await this.calculatorSoapService.add(<CalculatorParameters>{
+    this.response = await this.calculatorSoapService.add(<CalculatorParameters>{
       intA,
       intB,
     });
-    logger.debug(`Result is: ${JSON.stringify(this.result)}`);
-    return this.result;
+    logger.debug(`Result is: ${JSON.stringify(this.response.result)}`);
+    return this.response.result;
   }
 
   // TODO strongly type the response
   @get('api/people')
   async getAllPeople() {
     logger.debug('REST request for all People');
-    this.result = await this.calculatorRestService.getAllPeople();
-    logger.debug(`REST result: ${JSON.stringify(this.result)}`);
-    return this.result;
+    this.response = await this.calculatorRestService.getAllPeople();
+    logger.debug(`REST result: ${JSON.stringify(this.response.result)}`);
+    return this.response.result;
   }
   // TODO strongly type the response
   @get('/api/people/{personId}')
   async getPerson(@param.path.string('personId') personId: string) {
     logger.debug(`REST request for 1 person: ${personId}`);
-    this.result = await this.calculatorRestService.getPerson(personId);
-    logger.debug(`REST result: ${JSON.stringify(this.result)}`);
-    return this.result;
+    this.response = await this.calculatorRestService.getPerson(personId);
+    logger.debug(`REST result: ${JSON.stringify(this.response.result)}`);
+    return this.response.result;
   }
 }

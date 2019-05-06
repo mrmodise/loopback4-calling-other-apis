@@ -17,9 +17,7 @@ describe('CalculatorController', () => {
   });
 
   it('adds 2 numbers when GET /add is invoked', async () => {
-    const res = await client
-      .get(`/add/${numb}/${numb2}`)
-      .expect(200);
-    expect(res.body).to.containEql({greeting: 'result'});
+    const res = await client.get(`/add/${numb}/${numb2}`).expect(200);
+    expect(res.body).to.containEql({value: 20});
   });
 });
