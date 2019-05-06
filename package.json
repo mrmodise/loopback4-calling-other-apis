@@ -23,7 +23,7 @@
     "tslint": "lb-tslint",
     "tslint:fix": "npm run tslint -- --fix",
     "pretest": "npm run clean && npm run build",
-    "test": "lb-mocha --allow-console-logs \"dist/__tests__\"",
+    "test": "lb-mocha --timeout 10000 --allow-console-logs \"dist/__tests__\"",
     "posttest": "npm run lint",
     "test:dev": "lb-mocha --allow-console-logs dist/__tests__/**/*.js && npm run posttest",
     "docker:build": "docker build -t calling-other-apis .",
@@ -31,6 +31,7 @@
     "migrate": "node ./dist/migrate",
     "prestart": "npm run build",
     "start": "node .",
+    "start:watch": "tsc-watch --target es2017 --outDir ./dist --onSuccess \"node .\"",
     "prepublishOnly": "npm run test"
   },
   "repository": {
@@ -64,6 +65,7 @@
     "@loopback/testlab": "^1.2.5",
     "@loopback/tslint-config": "^2.0.4",
     "@types/node": "^10.11.2",
+    "tsc-watch": "^2.1.2",
     "tslint": "^5.15.0",
     "typescript": "^3.4.3"
   }
