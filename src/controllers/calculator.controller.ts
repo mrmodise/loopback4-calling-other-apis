@@ -40,7 +40,7 @@ export class CalculatorController {
   async getAllPeople() {
     logger.debug('REST request for all People');
     this.response = await this.calculatorRestService.getAllPeople();
-    logger.debug(`REST result: ${JSON.stringify(this.response)}`);
+    logger.debug(`REST result count: ${JSON.stringify(this.response.count)}`);
     return this.response;
   }
 
@@ -49,7 +49,7 @@ export class CalculatorController {
   async getPerson(@param.path.string('personId') personId: string) {
     logger.debug(`REST request for 1 person: ${personId}`);
     this.response = await this.calculatorRestService.getPerson(personId);
-    logger.debug(`REST result: ${JSON.stringify(this.response)}`);
+    logger.debug(`REST result: ${JSON.stringify(this.response.name)}`);
     return this.response;
   }
 }
