@@ -1,15 +1,9 @@
 import {inject} from '@loopback/context';
-import {
-  CalculatorRestServiceProvider,
-  CalculatorSoapServiceProvider,
-} from '../services';
 import {get, param} from '@loopback/rest';
-import {
-  CalculatorRestServiceBindings,
-  CalculatorSoapServiceBindings,
-} from '../keys';
+import {CalculatorRestServiceBindings, CalculatorSoapServiceBindings} from '../keys';
 import {AddResponse, CalculatorParameters} from '../helpers';
 import {logger} from '../helpers/logger';
+import {CalculatorRestService, CalculatorSoapService} from '../services';
 
 export class CalculatorController {
   // TODO strong type the result
@@ -17,11 +11,12 @@ export class CalculatorController {
   response: any;
 
   constructor(
-    @inject(CalculatorSoapServiceBindings.SERVICE)
-    protected calculatorSoapService: CalculatorSoapServiceProvider,
     @inject(CalculatorRestServiceBindings.SERVICE)
-    protected calculatorRestService: CalculatorRestServiceProvider,
-  ) {}
+    protected calculatorRestService: CalculatorRestService,
+    @inject(CalculatorSoapServiceBindings.SERVICE)
+    protected calculatorSoapService: CalculatorSoapService,
+  ) {
+  }
 
   @get('/add/{intA}/{intB}')
   async add(
@@ -43,15 +38,16 @@ export class CalculatorController {
   async getAllPeople() {
     logger.debug('REST request for all People');
     this.response = await this.calculatorRestService.getAllPeople();
-    logger.debug(`REST result: ${JSON.stringify(this.response.result)}`);
-    return this.response.result;
+    logger.debug(`REST result: ${JSON.stringify(this.response)}`);
+    return this.response;
   }
+
   // TODO strongly type the response
   @get('/api/people/{personId}')
   async getPerson(@param.path.string('personId') personId: string) {
     logger.debug(`REST request for 1 person: ${personId}`);
     this.response = await this.calculatorRestService.getPerson(personId);
-    logger.debug(`REST result: ${JSON.stringify(this.response.result)}`);
-    return this.response.result;
+    logger.debug(`REST result: ${JSON.stringify(this.response)}`);
+    return this.response;
   }
 }
