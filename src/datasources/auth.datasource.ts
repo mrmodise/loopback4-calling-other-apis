@@ -2,7 +2,7 @@ import {inject} from '@loopback/core';
 import {juggler} from '@loopback/repository';
 import * as config from './auth.datasource.json';
 
-export class AuthDatasource extends juggler.DataSource {
+export class AuthDataSource extends juggler.DataSource {
   static dataSourceName = 'auth';
 
   constructor(
