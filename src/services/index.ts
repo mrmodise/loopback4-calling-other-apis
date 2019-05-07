@@ -1,3 +1,3 @@
-export * from './calculator-soap-service.provider';
-export * from './calculator-rest-service.provider';
-export * from './auth-service.provider';
+export * from './auth.service';
+export * from './calculator-rest.service';
+export * from './calculator-soap.service';

@@ -1,11 +1,8 @@
-import {getService} from '@loopback/service-proxy';
-import {inject, Provider} from '@loopback/core';
+import {inject, Provider} from '@loopback/context';
 import {RestdsDataSource} from '../datasources';
+import {getService} from '@loopback/service-proxy';
 
-export interface CalculatorRestServiceProvider {
-  // this is where you define the Node.js methods that will be
-  // mapped to the REST operations as stated in the datasource
-  // json file.
+export interface CalculatorRestService {
   // TODO strongly type the return type
   // tslint:disable-next-line:no-any
   getAllPeople(): Promise<any[]>;
@@ -15,14 +12,14 @@ export interface CalculatorRestServiceProvider {
 }
 
 export class CalculatorRestServiceProvider
-  implements Provider<CalculatorRestServiceProvider> {
+  implements Provider<CalculatorRestService> {
   constructor(
-    // restds must match the name property in the datasource json file
     @inject('datasources.restds')
     protected dataSource: RestdsDataSource = new RestdsDataSource(),
-  ) {}
+  ) {
+  }
 
-  value(): Promise<CalculatorRestServiceProvider> {
+  value(): Promise<CalculatorRestService> {
     return getService(this.dataSource);
   }
 }
