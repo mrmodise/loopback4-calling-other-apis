@@ -3,7 +3,10 @@ import {get, param} from '@loopback/rest';
 import {AddResponse, CalculatorParameters} from '../helpers';
 import {logger} from '../helpers/logger';
 import {CalculatorRestService, CalculatorSoapService} from '../services';
-import {CalculatorRestServiceBindings, CalculatorSoapServiceBindings} from '../keys';
+import {
+  CalculatorRestServiceBindings,
+  CalculatorSoapServiceBindings,
+} from '../keys';
 
 export class CalculatorController {
   // TODO strong type the result
@@ -15,8 +18,7 @@ export class CalculatorController {
     protected calculatorRestService: CalculatorRestService,
     @inject(CalculatorSoapServiceBindings.SERVICE)
     protected calculatorSoapService: CalculatorSoapService,
-  ) {
-  }
+  ) {}
 
   @get('/add/{intA}/{intB}')
   async add(

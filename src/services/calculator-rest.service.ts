@@ -16,8 +16,7 @@ export class CalculatorRestServiceProvider
   constructor(
     @inject('datasources.restds')
     protected dataSource: RestdsDataSource = new RestdsDataSource(),
-  ) {
-  }
+  ) {}
 
   value(): Promise<CalculatorRestService> {
     return getService(this.dataSource);

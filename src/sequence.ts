@@ -19,8 +19,7 @@ export class MySequence implements SequenceHandler {
     @inject(SequenceActions.INVOKE_METHOD) protected invoke: InvokeMethod,
     @inject(SequenceActions.SEND) public send: Send,
     @inject(SequenceActions.REJECT) public reject: Reject,
-  ) {
-  }
+  ) {}
 
   async handle(context: RequestContext) {
     try {

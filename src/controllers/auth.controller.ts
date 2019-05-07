@@ -13,20 +13,16 @@ export class AuthController {
   constructor(
     @inject(AuthServiceBindings.SERVICE)
     protected authService: AuthService,
-  ) {
-  }
+  ) {}
 
   @post('/api/authenticate')
   async login(@requestBody() user: User): Promise<string> {
     logger.debug(
       `REST request to log user in with username: ${
         user.username
-        } and password: ${user.password}`,
+      } and password: ${user.password}`,
     );
-    this.response = await this.authService.login(
-      user.username,
-      user.password,
-    );
+    this.response = await this.authService.login(user.username, user.password);
     logger.debug(`REST response: ${JSON.stringify(this.response)}`);
     return this.response;
   }
