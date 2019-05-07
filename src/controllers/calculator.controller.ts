@@ -1,9 +1,9 @@
 import {inject} from '@loopback/context';
 import {get, param} from '@loopback/rest';
-import {CalculatorRestServiceBindings, CalculatorSoapServiceBindings} from '../keys';
 import {AddResponse, CalculatorParameters} from '../helpers';
 import {logger} from '../helpers/logger';
 import {CalculatorRestService, CalculatorSoapService} from '../services';
+import {CalculatorRestServiceBindings, CalculatorSoapServiceBindings} from '../keys';
 
 export class CalculatorController {
   // TODO strong type the result

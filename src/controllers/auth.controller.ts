@@ -1,9 +1,9 @@
 import {inject} from '@loopback/context';
-import {AuthServiceBindings} from '../keys';
 import {post, requestBody} from '@loopback/rest';
 import {logger} from '../helpers/logger';
 import {User} from '../models';
 import {AuthService} from '../services';
+import {AuthServiceBindings} from '../keys';
 
 export class AuthController {
   // TODO strong type the result
