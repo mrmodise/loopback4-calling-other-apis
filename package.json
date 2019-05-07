@@ -29,7 +29,7 @@
     "docker:build": "docker build -t calling-other-apis .",
     "docker:run": "docker run -p 3000:3000 -d calling-other-apis",
     "migrate": "node ./dist/migrate",
-    "prestart": "npm run build",
+    "prestart": "npm run clean && npm run build",
     "start": "node .",
     "start:watch": "tsc-watch --target es2017 --outDir ./dist --onSuccess \"node .\"",
     "prepublishOnly": "npm run test"
