@@ -1,6 +1,6 @@
 {
   "name": "calling-other-apis",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A demo project to illustrate calling other APIs in Loopback",
   "keywords": [
     "loopback-application",
@@ -43,7 +43,7 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
-  "author": "",
+  "author": "Mr Mod",
   "license": "",
   "files": [
     "README.md",
