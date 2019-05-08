@@ -14,7 +14,7 @@ export class Api extends Entity {
     itemType: 'any',
   })
     // tslint:disable-next-line:no-any
-  items?: any[];
+  items?: any;
 
 
   constructor(data?: Partial<Api>) {

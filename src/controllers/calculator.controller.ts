@@ -1,12 +1,12 @@
 import {inject} from '@loopback/context';
-import {get, param} from '@loopback/rest';
+import {get, param, post} from '@loopback/rest';
 import {AddResponse, CalculatorParameters} from '../helpers';
 import {logger} from '../helpers/logger';
 import {CalculatorRestService, CalculatorSoapService} from '../services';
-import {
-  CalculatorRestServiceBindings,
-  CalculatorSoapServiceBindings,
-} from '../keys';
+import {CalculatorRestServiceBindings, CalculatorSoapServiceBindings} from '../keys';
+import {repository} from '@loopback/repository';
+import {ApiRepository} from '../repositories';
+import {Api} from '../models';
 
 export class CalculatorController {
   // TODO strong type the result
@@ -18,7 +18,10 @@ export class CalculatorController {
     protected calculatorRestService: CalculatorRestService,
     @inject(CalculatorSoapServiceBindings.SERVICE)
     protected calculatorSoapService: CalculatorSoapService,
-  ) {}
+    @repository(ApiRepository)
+    protected apiRepository: ApiRepository,
+  ) {
+  }
 
   @get('/add/{intA}/{intB}')
   async add(
@@ -47,9 +50,32 @@ export class CalculatorController {
   // TODO strongly type the response
   @get('/api/people/{personId}')
   async getPerson(@param.path.string('personId') personId: string) {
-    logger.debug(`REST request for 1 person: ${personId}`);
-    this.response = await this.calculatorRestService.getPerson(personId);
-    logger.debug(`REST result: ${JSON.stringify(this.response.name)}`);
+
+    let api: Api = new Api();
+    api.id = personId;
+
+    await logger.debug(`REST request for 1 person: ${api.id}`);
+
+    // retrieve cached copy of the results
+    const result = await this.apiRepository.get(api.id);
+    await logger.debug(`REST cached result: ${JSON.stringify(result)}`);
+
+    // no copy exists
+    if (await result === null) {
+      // make an API call for new data
+      this.response = await this.calculatorRestService.getPerson(api.id);
+      await logger.debug(`REST uncached result: ${JSON.stringify(this.response)}`);
+      // tslint:disable-next-line:no-unused-expression
+      api.items = this.response;
+      // cache data
+      await this.apiRepository.set(api.id, api);
+    }
     return this.response;
+  }
+
+  @post('/api/people/{personId}')
+  async remove(@param.path.string('personId') personId: string) {
+    const res = await this.apiRepository.delete(personId);
+    await logger.debug(`REST request to delete user ${personId} from cache: ${JSON.stringify(res)}`);
   }
 }
