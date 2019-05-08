@@ -15,6 +15,7 @@ Install the following:
 
 * NodeJS vlatest (https://nodejs.org/en/download/)
 * Loopback 4 (https://v4.loopback.io/getting-started.html)
+* Redis (https://redis.io/download)
 
 ## Setup
 Download project:
@@ -44,7 +45,8 @@ $ npm run test
 ```
 
 ## Performance
-
+Redis has been used to cache requests for data retrieved on endpoint (GET) ``/api/people/{personId}``. To remove cached results
+load endpoint (POST) ``/api/people/{personId}``
 
 ## License
 
