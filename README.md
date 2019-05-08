@@ -1,6 +1,6 @@
 # Calling Other APIs
 This is a demo project that illustrates calling APIs from within Loopback 4. Unlike most demos you have seen online this
- demo project covers invoking an API that is protected (requires username and password).
+ demo project covers invoking an API that is protected (requires username and password), and include Redis for caching requests.
  
  The project has 3 controllers that map to 5 end points, namely:
  
