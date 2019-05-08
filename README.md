@@ -43,6 +43,9 @@ To execute tests:
 $ npm run test
 ```
 
+## Performance
+
+
 ## License
 
 ```

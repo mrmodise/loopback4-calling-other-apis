@@ -11,6 +11,7 @@
     "node": ">=8.9"
   },
   "scripts": {
+    "commit": "npx git-cz",
     "build:apidocs": "lb-apidocs",
     "build": "lb-tsc es2017 --outDir dist",
     "build:watch": "lb-tsc --watch",
@@ -37,6 +38,11 @@
   "repository": {
     "type": "git"
   },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
   "author": "",
   "license": "",
   "files": [
@@ -58,7 +64,8 @@
     "@loopback/service-proxy": "^1.1.5",
     "log4js": "^4.1.1",
     "loopback-connector-rest": "^3.4.1",
-    "loopback-connector-soap": "^4.3.0"
+    "loopback-connector-soap": "^4.3.0",
+    "loopback-connector-kv-redis": "^3.0.1"
   },
   "devDependencies": {
     "@loopback/build": "^1.5.0",
@@ -67,6 +74,7 @@
     "@types/node": "^10.11.2",
     "tsc-watch": "^2.1.2",
     "tslint": "^5.15.0",
-    "typescript": "^3.4.3"
+    "typescript": "^3.4.3",
+    "commitizen": "^3.1.1"
   }
 }
