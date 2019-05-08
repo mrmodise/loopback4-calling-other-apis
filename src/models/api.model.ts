@@ -13,6 +13,7 @@ export class Api extends Entity {
     type: 'array',
     itemType: 'any',
   })
+    // tslint:disable-next-line:no-any
   items?: any[];
 
 
