@@ -27,6 +27,7 @@
     "test": "lb-mocha --timeout 10000 --allow-console-logs \"dist/__tests__\"",
     "posttest": "npm run lint:fix && npm run lint",
     "test:dev": "lb-mocha --allow-console-logs dist/__tests__/**/*.js && npm run posttest",
+    "test:unit": "lb-mocha --allow-console-logs --watch dist/**/*.unit.js",
     "docker:build": "docker build -t calling-other-apis .",
     "docker:run": "docker run -p 3000:3000 -d calling-other-apis",
     "migrate": "node ./dist/migrate",
