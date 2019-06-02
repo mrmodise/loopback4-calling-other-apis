@@ -39,7 +39,13 @@ $ npm start
 
 ## Unit tests
 
-To execute tests:
+To execute unit tests:
+```
+$ npm run test:unit
+```
+
+## Acceptance tests
+To execute acceptance tests:
 ```
 $ npm run test
 ```
