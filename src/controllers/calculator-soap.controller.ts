@@ -29,4 +29,19 @@ export class CalculatorSoapController {
     logger.debug(`Result is: ${JSON.stringify(this.response.result)}`);
     return this.response.result;
   }
+
+  @get('/subtract/{intA}/{intB}')
+  async subtract(
+    @param.path.integer('intA') intA: number,
+    @param.path.integer('intB') intB: number,
+  ): Promise<AddResponse> {
+    // TODO add validations checks before submitting data
+    logger.debug(`REST request to subtract: ${intB} from ${intA}`);
+    this.response = await this.calculatorSoapService.subtract(<CalculatorParameters>{
+      intA,
+      intB,
+    });
+    logger.debug(`Result is: ${JSON.stringify(this.response.result)}`);
+    return this.response.result;
+  }
 }
