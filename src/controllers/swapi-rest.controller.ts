@@ -1,20 +1,19 @@
 import {inject} from '@loopback/context';
 import {get, param, post} from '@loopback/rest';
 import {logger} from '../helpers/logger';
-import {CalculatorRestService} from '../services';
-import {CalculatorRestServiceBindings} from '../keys';
+import {SwapiRestService} from '../services';
 import {repository} from '@loopback/repository';
 import {ApiRepository} from '../repositories';
 import {Api} from '../models';
 
-export class CalculatorRestController {
+export class SwapiRestController {
   // TODO strong type the result
   // tslint:disable-next-line:no-any
   response: any;
 
   constructor(
-    @inject(CalculatorRestServiceBindings.SERVICE)
-    protected calculatorRestService: CalculatorRestService,
+    @inject('services.SwapiRestService')
+    protected swapiRestService: SwapiRestService,
     @repository(ApiRepository)
     protected apiRepository: ApiRepository,
   ) {
@@ -24,7 +23,7 @@ export class CalculatorRestController {
   @get('api/people')
   async getAllPeople() {
     logger.debug('REST request for all People');
-    this.response = await this.calculatorRestService.getAllPeople();
+    this.response = await this.swapiRestService.getAllPeople();
     logger.debug(`REST result count: ${JSON.stringify(this.response.count)}`);
     return this.response;
   }
@@ -45,7 +44,7 @@ export class CalculatorRestController {
     // no copy exists
     if (await result === null) {
       // make an API call for new data
-      this.response = await this.calculatorRestService.getPerson(api.id);
+      this.response = await this.swapiRestService.getPerson(api.id);
       await logger.debug(`REST uncached result: ${JSON.stringify(this.response)}`);
       // tslint:disable-next-line:no-unused-expression
       api.items = this.response;
