@@ -9,6 +9,12 @@ describe('CalculatorSoapController (unit)', async () => {
   let servicePromise: Promise<CalculatorSoapService>;
   let service: CalculatorSoapService;
 
+  const givenCalculatorSoapService = () => {
+    const config = merge({}, CALCULATOR_CONFIG, {});
+    const dataSource = new DsDataSource(config);
+    servicePromise = new CalculatorSoapServiceProvider(dataSource).value();
+  };
+
   before(givenCalculatorSoapService);
 
   beforeEach(async () => {
@@ -17,17 +23,11 @@ describe('CalculatorSoapController (unit)', async () => {
     });
   });
 
-  describe('add()', async () => {
+  describe('add(intA, intB)', async () => {
     it('adds two numbers when present', async () => {
       const controller = new CalculatorSoapController(service);
       const add = await controller.add(100, 23);
       expect(add.value).to.equal(123);
     });
   });
-
-  function givenCalculatorSoapService() {
-    const config = merge({}, CALCULATOR_CONFIG, {});
-    const dataSource = new DsDataSource(config);
-    servicePromise = new CalculatorSoapServiceProvider(dataSource).value();
-  }
 });
