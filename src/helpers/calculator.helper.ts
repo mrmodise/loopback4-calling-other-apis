@@ -2,6 +2,8 @@ export interface AddResponse {
   result: {
     value: number;
   };
+
+  value: object;
 }
 
 export interface SubtractResponse {
