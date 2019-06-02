@@ -30,4 +30,12 @@ describe('CalculatorSoapController (unit)', async () => {
       expect(add.value).to.equal(123);
     });
   });
+
+  describe('subtract(intA, intB)', async () => {
+    it('subtract two numbers when present', async () => {
+      const controller = new CalculatorSoapController(service);
+      const add = await controller.subtract(100, 23);
+      expect(add.value).to.equal(77);
+    });
+  });
 });
