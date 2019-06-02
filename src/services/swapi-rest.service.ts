@@ -2,7 +2,7 @@ import {inject, Provider} from '@loopback/context';
 import {RestdsDataSource} from '../datasources';
 import {getService} from '@loopback/service-proxy';
 
-export interface CalculatorRestService {
+export interface SwapiRestService {
   // TODO strongly type the return type
   // tslint:disable-next-line:no-any
   getAllPeople(): Promise<any[]>;
@@ -11,14 +11,14 @@ export interface CalculatorRestService {
   getPerson(personId: string): Promise<any[]>;
 }
 
-export class CalculatorRestServiceProvider
-  implements Provider<CalculatorRestService> {
+export class SwapiRestServiceProvider
+  implements Provider<SwapiRestService> {
   constructor(
     @inject('datasources.restds')
     protected dataSource: RestdsDataSource = new RestdsDataSource(),
   ) {}
 
-  value(): Promise<CalculatorRestService> {
+  value(): Promise<SwapiRestService> {
     return getService(this.dataSource);
   }
 }
