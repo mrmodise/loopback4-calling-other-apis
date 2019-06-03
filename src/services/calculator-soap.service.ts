@@ -1,4 +1,4 @@
-import {AddResponse, CalculatorParameters, SubtractResponse} from '../helpers';
+import {AddResponse, CalculatorParameters, SubtractResponse, DivideResponse} from '../helpers';
 import {inject, Provider} from '@loopback/context';
 import {DsDataSource} from '../datasources';
 import {getService} from '@loopback/service-proxy';
@@ -6,6 +6,7 @@ import {getService} from '@loopback/service-proxy';
 export interface CalculatorSoapService {
   add(args: CalculatorParameters): Promise<AddResponse>;
   subtract(args: CalculatorParameters): Promise<SubtractResponse>;
+  divide(args: CalculatorParameters): Promise<DivideResponse>;
 }
 
 export class CalculatorSoapServiceProvider
