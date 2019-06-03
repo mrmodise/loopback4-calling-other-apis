@@ -38,4 +38,12 @@ describe('CalculatorSoapController (unit)', async () => {
       expect(add.value).to.equal(77);
     });
   });
+
+  describe('divide(intA, intB)', async () => {
+    it('divides two numbers when present', async () => {
+      const controller = new CalculatorSoapController(service);
+      const add = await controller.divide(100, 23);
+      expect(add.value).to.equal(4);
+    });
+  });
 });
