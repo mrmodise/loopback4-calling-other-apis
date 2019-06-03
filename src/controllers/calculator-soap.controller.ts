@@ -44,4 +44,19 @@ export class CalculatorSoapController {
     logger.debug(`Result is: ${JSON.stringify(this.response.result)}`);
     return this.response.result;
   }
+
+  @get('/divide/{intA}/{intB}')
+  async divide(
+    @param.path.integer('intA') intA: number,
+    @param.path.integer('intB') intB: number,
+  ): Promise<AddResponse> {
+    // TODO add validations checks before submitting data
+    logger.debug(`REST request to divide: ${intB} and ${intA}`);
+    this.response = await this.calculatorSoapService.divide(<CalculatorParameters>{
+      intA,
+      intB,
+    });
+    logger.debug(`Result is: ${JSON.stringify(this.response.result)}`);
+    return this.response.result;
+  }
 }
