@@ -69,7 +69,7 @@
     "loopback-connector-kv-redis": "^3.0.1"
   },
   "devDependencies": {
-    "@loopback/build": "^1.5.0",
+    "@loopback/build": "^9.0.5",
     "@loopback/testlab": "^1.2.5",
     "@loopback/tslint-config": "^2.0.4",
     "@types/node": "^10.11.2",
