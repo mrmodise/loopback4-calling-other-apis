@@ -70,7 +70,7 @@
   },
   "devDependencies": {
     "@loopback/build": "^9.0.5",
-    "@loopback/testlab": "^1.2.5",
+    "@loopback/testlab": "^5.0.5",
     "@loopback/tslint-config": "^2.0.4",
     "@types/node": "^10.11.2",
     "tsc-watch": "^2.1.2",
